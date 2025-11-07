@@ -1,0 +1,138 @@
+/* cadastro.page.scss */
+
+/* Container principal */
+.container {
+  display: flex; /* Flexbox para organizar elementos */
+  flex-direction: column; /* Elementos em coluna (vertical) */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  height: 100%; /* Ocupa altura total */
+}
+
+/* conteúdo do card e título */
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Para posicionamento de elementos sobrepostos */
+  width: 300px; /* Largura fixa */
+  max-width: 90%; /* Responsivo em telas pequenas */
+}
+
+/* Container do título e claquete */
+.logo-claquete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10; /* Fica acima do card */
+}
+
+/* Título principal */
+.clap-title {
+  font-size: 2.1rem; /* Tamanho da fonte */
+  font-weight: bold; /* Negrito */
+  color: #fff; /* Cor branca */
+  margin-top: 0; /* Sem margem superior */
+  margin-bottom: 0; /* Sem margem inferior */
+}
+
+/* Claquete decorativa */
+.claquete-icon-placeholder {
+  z-index: 10; /* Fica acima do card */
+  width: 120px;
+  height: 120px;
+  margin-top: -4px; /* Ajusta posição vertical */
+  margin-bottom: -60px; /* Sobrepõe o card */
+  transform: skewY(5deg); /* Efeito de inclinação */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.claquete-icon-placeholder img {
+  max-width: 150%; /* Não ultrapassa tamanho máximo */
+  max-height: 150%;
+}
+
+/* Fundo da página */
+ion-content {
+  --background: #7a0000; /* Fundo vermelho escuro */
+}
+
+/* Card de cadastro */
+ion-card {
+  width: 90%;
+  max-width: 300px;
+  --background: rgba(255, 255, 255, 0.1); /* Fundo transparente com blur */
+  backdrop-filter: blur(50px); /* Desfoque atrás do card */
+  -webkit-backdrop-filter: blur(50px);
+  border-radius: 12px; /* Cantos arredondados */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+}
+
+/* Conteúdo dentro do card */
+ion-card-content {
+  --border-radius: 60px;
+  padding: 34px; /* Espaçamento interno */
+}
+
+/* Linha do botão */
+.btn-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px; /* Espaço acima do botão */
+}
+
+/* Botão de cadastro/login */
+.login-button {
+  --background: #000; /* Cor do botão */
+  --background-activated: #222; /* Ao clicar */
+  --background-focused: #111; /* Ao focar */
+  --opacity: 1;
+  border-radius: 20%; /* Cantos arredondados */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza conteúdo do botão */
+}
+
+/* Itens de input */
+.input-item {
+  color: #fff; /* Cor do texto */
+  --background: none; /* Sem fundo */
+  border-radius: 10px; /* Cantos arredondados */
+  margin-top: 15px; /* Espaço entre inputs */
+  display: block !important; /* Força layout vertical */
+  flex-direction: column !important; /* Mantém em coluna */
+}
+
+/* Label dos inputs */
+.input-item ion-label {
+  color: #ffffff;
+  font-weight: 600; /* Negrito leve */
+  margin-bottom: 5px; /* Espaço entre label e input */
+}
+
+/* Mensagens de erro */
+.error {
+  font-size: 9px !important; /* Tamanho pequeno */
+  margin-top: 4px;
+  margin-left: 16px; /* Espaço da borda */
+  color: #fffb00; /* Cor amarela */
+}
+
+/* Título do card */
+.title {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  color: #ffffff;
+  font-size: medium;
+  font-weight: 600;
+  margin: 20px; /* Espaço ao redor do título */
+}
+
+/* Ajuste do card em relação à claquete */
+.login-card {
+  margin-top: -70px; /* Puxa card para cima */
+  z-index: 1; /* Fica abaixo da claquete */
+  width: 100%;
+  max-width: 300px;
+}

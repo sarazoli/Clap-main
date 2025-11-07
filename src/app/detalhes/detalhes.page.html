@@ -1,0 +1,68 @@
+<!-- 🧭 Cabeçalho principal da página de detalhes -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- 🔙 Botão de voltar (retorna para a página Home) -->
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- 🎬 Conteúdo principal da página -->
+<!-- O *ngIf garante que só será renderizado quando o objeto 'detalhesFilme' estiver carregado -->
+<ion-content [fullscreen]="true" *ngIf="detalhesFilme?.id">
+  
+  <!-- 🖼️ Imagem de fundo (poster grande do filme) -->
+  <img
+    class="header-image"
+    alt="Imagem de fundo do filme"
+    [src]="'https://image.tmdb.org/t/p/w780' + detalhesFilme.backdrop_path"
+  />
+
+  <!-- 📋 Área de conteúdo textual (título, sinopse, elenco) -->
+  <div class="content-padding">
+    
+    <!-- 🎞️ Título do filme -->
+    <h2>{{ detalhesFilme.title }}</h2>
+
+    <!-- 📖 Seção de sinopse -->
+    <h3>Sinopse</h3>
+    <p>
+      <!-- Se não houver sinopse, exibe texto padrão -->
+      {{ detalhesFilme.overview || 'Sinopse não disponível.' }}
+    </p>
+
+    <!-- 👥 Seção do elenco -->
+    <h3>Elenco</h3>
+
+    <!-- 🎠 Container horizontal com rolagem dos atores -->
+    <div class="cast-scroll">
+      
+      <!-- 🔁 Loop que mostra até 10 atores do elenco -->
+      <div 
+        class="cast-member" 
+        *ngFor="let ator of detalhesFilme.credits?.cast | slice:0:10"
+      >
+        
+        <!-- 🧍 Foto (ou ícone genérico, se não houver imagem do ator) -->
+        <div class="cast-icon-placeholder">
+          <img 
+            *ngIf="ator.profile_path"
+            [src]="'https://image.tmdb.org/t/p/w200' + ator.profile_path" 
+            alt="{{ ator.name }}"
+            class="foto-ator-redonda"
+          />
+          <!-- 👤 Ícone de pessoa mostrado quando o ator não tem imagem -->
+          <ion-icon name="person" *ngIf="!ator.profile_path"></ion-icon>
+        </div>
+        
+        <!-- 🏷️ Nome do ator -->
+        <span>{{ ator.name }}</span>
+        
+        <!-- 🎭 Papel/personagem interpretado -->
+        <span class="cast-role">{{ ator.character }}</span>
+      </div>
+
+    </div> <!-- /cast-scroll -->
+  </div> <!-- /content-padding -->
+</ion-content>

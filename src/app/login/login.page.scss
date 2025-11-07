@@ -1,0 +1,137 @@
+/* login.page.scss */
+
+/* Container principal */
+.container {
+  display: flex;
+  flex-direction: column; /* Elementos empilhados verticalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  height: 100%; /* Ocupa altura total */
+}
+
+/* Wrapper do conteúdo principal */
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Para posicionamento de elementos sobrepostos */
+  width: 300px; /* Largura fixa */
+  max-width: 90%; /* Responsivo */
+}
+
+/* Título principal */
+.clap-title {
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Claquete decorativa */
+.claquete-icon-placeholder {
+  z-index: 10; /* Fica acima do card */
+  width: 120px;
+  height: 120px;
+  margin-top: -4px; /* Ajuste vertical */
+  margin-bottom: -60px; /* Sobrepõe card */
+  transform: skewY(5deg); /* Inclinação */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.claquete-icon-placeholder img {
+  max-width: 150%;
+  max-height: 150%;
+}
+
+/* Fundo da página */
+ion-content {
+  --background: #7a0000; /* Fundo vermelho escuro */
+}
+
+/* Card de login */
+ion-card {
+  width: 90%;
+  max-width: 300px;
+  --background: rgba(255, 255, 255, 0.1); /* Fundo transparente */
+  backdrop-filter: blur(50px); /* Desfoque do fundo */
+  -webkit-backdrop-filter: blur(50px);
+  border-radius: 12px; /* Cantos arredondados */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+}
+
+/* Conteúdo do card */
+ion-card-content {
+  --border-radius: 60px;
+  padding: 34px;
+}
+
+/* Linha de botão */
+.btn-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+/* Botão de login */
+.login-button {
+  --background: #000; /* Cor do botão */
+  --background-activated: #222; /* Ao clicar */
+  --background-focused: #111; /* Ao focar */
+  --opacity: 1;
+  border-radius: 20%; /* Cantos arredondados */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inputs */
+.input-item {
+  color: #fff;
+  --background: none; /* Sem fundo */
+  border-radius: 10px;
+  margin-top: 15px; /* Espaço entre inputs */
+  display: block !important; /* Layout vertical forçado */
+  flex-direction: column !important;
+}
+
+.input-item ion-label {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* Mensagens de erro */
+.error {
+  font-size: 9px !important;
+  margin-top: 4px;
+  margin-left: 16px;
+  color: #fffb00; /* Amarelo */
+}
+
+/* Loading customizado */
+.custom-loading {
+  --background: transparent; /* Fundo do loading transparente */
+  --spinner-color: #ffb703; /* Cor do spinner */
+  --backdrop-opacity: 0.1; /* Opacidade do backdrop */
+  --color: #fff; /* Cor da mensagem */
+}
+
+/* Card de login sobreposto à claquete */
+.login-card {
+  margin-top: -70px; /* Puxa card para cima */
+  z-index: 1; /* Fica abaixo da claquete */
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Título do card */
+.title {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  color: #ffffff;
+  font-size: medium;
+  font-weight: 600;
+  margin: 20px; /* Espaço ao redor */
+}

@@ -1,0 +1,77 @@
+.custom-loading {
+--background: none !important; /* tira o quadrado */
+--spinner-color: #ffffff !important;  /* cor das bolhas */
+--backdrop-opacity: 0.8 !important;   /* transparência do fundo */
+--color: rgb(255, 255, 255) !important;   
+    font-weight: 600;  /* 500 = semi-bold, 600 = bold */
+    font-size: 1.1rem; /* opcional, deixa um pouco maior */
+    letter-spacing: 0.5px; /* dá um respiro entre as letras */         /* texto do loading */
+    text-align: center;
+    box-shadow: none !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    background: none !important;
+}
+
+/* Container do link do rodapé */
+.footer-links {
+  text-align: center; /* Centraliza o texto/link horizontalmente */
+  margin-top: 10px;   /* Dá um espaço em cima, separando do card */
+}
+
+/* Estilo do link dentro do footer-links */
+.footer-links a {
+  color: #fff;         /* Cor do texto do link: branco */
+  text-decoration: none; /* Remove sublinhado padrão do link */
+}
+
+/* Efeito quando o usuário passa o mouse sobre o link */
+.footer-links a:hover {
+  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+}
+
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+ .transparent-modal {
+  --background: transparent; 
+  --height: 100%;
+  --width: 100%;
+}
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';

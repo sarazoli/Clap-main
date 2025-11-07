@@ -1,0 +1,83 @@
+<ion-header mode="ios" translucent="true">
+  <ion-toolbar class="toolbar-dark">
+    <ion-title>Clap!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="dark-theme">
+
+  <!-- 🔍 Barra de busca customizada -->
+<div class="search-container">
+  <div class="search-wrapper">
+    <img src="assets/lupa.png" alt="Buscar" class="search-icon" />
+    <input
+      type="text"
+      [(ngModel)]="busca"
+      (input)="onBuscarFilmes()" 
+      placeholder="Buscar filmes..."
+      class="custom-search-input"
+    />
+  </div>
+</div>
+
+
+  <!-- 🎬 Banner -->
+  <swiper-container
+    class="banner-swiper"
+    slides-per-view="1"
+    pagination="true"
+    autoplay-delay="3000"
+    loop="true"
+  >
+    <swiper-slide *ngFor="let movie of filmesFiltrados.slice(0, 3)" (click)="abrirDetalhes(movie.id)">
+      <img
+        [src]="movie.backdrop || 'assets/imgs/noimg.jpg'"
+        [alt]="movie.title"
+        class="banner-img"
+      />
+    </swiper-slide>
+  </swiper-container>
+
+  <!-- 📂 Categorias -->
+  <div class="categorias-header">
+    <h2>Categorias</h2>
+    <button class="filter-btn" (click)="abrirFiltro()">
+      <img src="assets/filter.png" alt="Filtro" class="filter-icon" />
+    </button>
+  </div>
+
+  <!-- 🎞️ Lista de filmes -->
+  <div class="filmes-grid">
+    <div *ngFor="let movie of filmesFiltrados" class="filme-card" (click)="abrirDetalhes(movie.id)">
+      <img [src]="movie.poster || 'assets/imgs/noimg.jpg'" [alt]="movie.title" />
+      <div class="info">
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.release_date | date: "dd 'de' MMM 'de' yyyy" }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🧩 Modal estilo Netflix (com X abaixo das categorias) -->
+  <div class="filter-modal" *ngIf="mostrarFiltro" (click)="fecharFiltro()">
+    <div class="filter-overlay" (click)="$event.stopPropagation()">
+      <div class="categorias-list">
+
+        <!-- 🔹 Agora cada categoria é clicável -->
+        <div
+          *ngFor="let categoria of categorias"
+          class="categoria-item"
+          [class.ativa]="categoria === selectedCategoria"
+          (click)="selecionarCategoria(categoria)"
+        >
+          {{ categoria }}
+        </div>
+
+        <!-- X logo abaixo das categorias -->
+        <button class="close-btn" (click)="fecharFiltro()">
+          <img src="assets/x.png" alt="Fechar" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

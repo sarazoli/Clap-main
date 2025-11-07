@@ -1,0 +1,137 @@
+// Fundo preto e cor do botão de voltar
+ion-toolbar {
+  --background: #000000;
+  --color: #ffffff; // Cor do ícone de voltar
+}
+
+ion-content {
+  --background: #000000;
+  color: #ffffff; // Cor padrão do texto
+}
+
+.header-image {
+  width: 100%;
+  height: 220px; // Altura fixa como no design
+  object-fit: cover; 
+}
+
+// Adiciona padding ao conteúdo abaixo da imagem
+.content-padding {
+  padding: 0 16px;
+}
+/* detalhes.page.scss */
+
+.foto-ator-redonda {
+   background: #1c1c1e; // Fundo cinza escuro para o ícone
+  border-radius: 100%; // Deixa redondo
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+
+  ion-icon {
+    font-size: 2rem;
+    color: #a0a0a0; // Cor do ícone placeholder
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #a0a0a0; // Cor cinza do título da seção
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+p {
+  color: #c0c0c0; // Cor do texto da sinopse
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+// --- Estilização do Elenco (Scroll Horizontal) ---
+
+.cast-scroll {
+  display: flex;
+  gap: 12px;            /* espaço entre itens */
+  padding: 12px 8px;
+  overflow-x: auto;
+  align-items: flex-start; /* evita que o texto da linha empurre verticalmente */
+}
+
+/* cada membro do elenco (um item do carrossel) */
+.cast-member {
+  box-sizing: border-box;
+  width: 100px;         /* largura fixa suficiente para foto + texto */
+  min-width: 100px;     /* evita encolher demais em telas pequenas */
+  flex: 0 0 auto;       /* mantém cada item como bloco não flexível */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;             /* espaçamento entre foto, nome e papel */
+  padding: 4px;
+}
+
+/* placeholder / foto redonda */
+.cast-icon-placeholder {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #222;
+}
+
+/* imagem dentro do placeholder */
+.cast-icon-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* nome do ator - evita overflow e quebra corretamente */
+.cast-member .actor-name {
+  font-size: 0.85rem;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0 2px;
+  white-space: normal;          /* permitir que quebre em várias linhas */
+  word-break: break-word;       /* quebra palavras longas se preciso */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;         /* limita linhas no WebKit */
+  -webkit-line-clamp: 2;        /* mostra até 2 linhas do nome */
+  -webkit-box-orient: vertical;
+}
+
+/* papel/character em fonte menor */
+.cast-role {
+  font-size: 0.75rem;
+  color: #bfbfbf;
+  margin-top: 0;
+  white-space: nowrap;          /* mantém o papel em uma linha curta */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* pequena melhoria responsiva — reduz tamanho em telas muito pequenas */
+@media (max-width: 360px) {
+  .cast-member {
+    width: 80px;
+    min-width: 80px;
+  }
+  .cast-icon-placeholder { width: 64px; height: 64px; }
+  .cast-member .actor-name { font-size: 0.78rem; -webkit-line-clamp: 2; }
+}

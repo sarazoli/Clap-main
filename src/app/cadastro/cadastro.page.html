@@ -1,0 +1,75 @@
+<!-- cadastro.page.html -->
+<ion-content>
+  <div class="container">
+
+    <!-- Título do app -->
+    <h1 class="clap-title">CLap!</h1>
+
+    <!-- Claquete decorativa -->
+    <div class="claquete-icon-placeholder">
+      <img src="assets/icon/claquete.png" alt="Clap Icon">
+    </div>
+
+    <!-- Card de cadastro -->
+    <ion-card>
+      <ion-card-content>
+        <h1 class="title">Cadastro</h1>
+
+        <!-- Formulário de cadastro -->
+        <form [formGroup]="cadastroForm" (ngSubmit)="onRegister()" novalidate>
+
+          <!-- Campo Nome -->
+          <ion-item class="input-item">
+            <ion-label position="stacked">Nome</ion-label>
+            <ion-input type="text" formControlName="nome"></ion-input>
+          </ion-item>
+          <ion-text class="error" color="light" *ngIf="cadastroForm.get('nome')?.touched && cadastroForm.get('nome')?.hasError('required')">
+            O nome é obrigatório.
+          </ion-text>
+
+          <!-- Campo Email -->
+          <ion-item class="input-item">
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-text class="error" color="light" *ngIf="cadastroForm.get('email')?.touched && cadastroForm.get('email')?.hasError('required')">
+            O e-mail é obrigatório.
+          </ion-text>
+          <ion-text class="error" color="light" *ngIf="cadastroForm.get('email')?.touched && cadastroForm.get('email')?.hasError('email')">
+            Digite um e-mail válido (ex: usuario@email.com).
+          </ion-text>
+
+          <!-- Campo Senha -->
+          <ion-item class="input-item">
+            <ion-label position="stacked">Senha</ion-label>
+            <ion-input type="password" formControlName="password">
+              <ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle>
+            </ion-input>
+          </ion-item>
+          <ion-text class="error" color="light" *ngIf="cadastroForm.get('password')?.touched && cadastroForm.get('password')?.hasError('required')">
+            A senha é obrigatória.
+          </ion-text>
+          <ion-text class="error" color="light" *ngIf="cadastroForm.get('password')?.touched && cadastroForm.get('password')?.hasError('minlength')">
+            A senha deve ter pelo menos 8 caracteres.
+          </ion-text>
+
+          <!-- Botão de envio -->
+          <div class="btn-row">
+            <ion-button type="submit" class="login-button" shape="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+              </svg>
+            </ion-button>
+          </div>
+
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Link para Login -->
+    <div class="footer-links">
+      <a routerLink="/login">Já tem conta? Faça login!</a>
+    </div>
+
+  </div>
+</ion-content>
