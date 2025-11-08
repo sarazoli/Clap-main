@@ -1,56 +1,46 @@
 # 🎬 Clap!
 
-**Clap!** é um aplicativo mobile desenvolvido com **Ionic + Angular**, que funciona como um catálogo de filmes.  
-Com ele, você pode pesquisar títulos, ler sinopses, conhecer o elenco e muito mais.  
-Além disso, é possível criar sua conta e fazer login para acessar todos os recursos. 🍿  
+Aplicativo de catálogo de filmes desenvolvido em **Ionic + Angular**, onde o usuário pode **pesquisar filmes**, **ver sinopse e elenco**, além de **criar conta e fazer login**.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- 🔍 **Pesquisa de filmes** por título  
-- 📖 **Exibição da sinopse** e detalhes do filme  
-- 🎭 **Listagem de elenco** e informações adicionais  
-- 🔐 **Sistema de login e cadastro** de usuários  
-- 🌐 **Consumo de API** para buscar os dados dos filmes  
-- 💅 **Design responsivo e moderno**
+- 🔍 Pesquisa de filmes usando uma **API de filmes**
+- 📖 Exibição de **sinopse**, **elenco** e outras informações
+- 👤 Sistema de **login e cadastro de usuários**
+- 🎨 Interface moderna e responsiva desenvolvida no **Figma**
+- ⚙️ Conexão com **Firebase** para autenticação
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🧠 Tecnologias Utilizadas
 
-- [Ionic Framework](https://ionicframework.com/)  
-- [Angular](https://angular.io/)  
-- [TypeScript](https://www.typescriptlang.org/)  
-- HTML / SCSS  
-- [Firebase Authentication](https://firebase.google.com/docs/auth) — para login e cadastro  
-- [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) — para os dados dos filmes  
-
----
-
-## 👩‍💻 Autores
-
-- **Sara Oliveira** — Designer e desenvolvedora front-end  
-- **Carolyna Costa** — Designer e desenvolvedora front-end  
-- **Caio Pita** — Desenvolvedor e colaborador do projeto  
+- **Ionic Framework**
+- **Angular**
+- **Firebase**
+- **API de Filmes** (The Movie Database ou similar)
+- **TypeScript / HTML / SCSS**
 
 ---
 
-## 💡 Sobre o Projeto
+## 👩‍💻 Desenvolvedores
 
-O **Clap!** foi desenvolvido como parte de um **projeto acadêmico**, com o objetivo de aplicar conhecimentos em:
+- **Sara Oliveira**  
+- **Caio Pita**  
+- **Carolyna Costa**
 
-- Desenvolvimento mobile híbrido  
-- Consumo de APIs externas  
-- Integração com sistemas de autenticação de usuários  
+---
 
-O nome **“Clap!”** vem da ideia de *“bater palmas”* para o cinema — celebrando os filmes e os artistas por trás deles. 🎥✨  
+## 🎨 Design no Figma
 
+Você pode visualizar o design completo do aplicativo no Figma:  
+👉 [Clique aqui para abrir o projeto no Figma](https://www.figma.com/design/PrW5TuKyqkHCRfQWVj90Ph/avalia%C3%A7%C3%A3o-formadora?node-id=0-1&t=rpRI77ee99c8JGTG-1)
 
-## 📲 Como Executar o Projeto
+---
 
-1. Clone este repositório:
+## 💡 Como Rodar o Projeto
+
+1. Clone o repositório:
    ```bash
-   git clone https://github.com/SEU_USUARIO/Clap.git
-
-
+   git clone https://github.com/CarolynaCosta/Clap.git
