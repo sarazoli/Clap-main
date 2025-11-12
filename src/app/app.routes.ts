@@ -15,6 +15,11 @@ export const routes: Routes = [
   path: 'detalhes/:id',
   loadComponent: () => import('./detalhes/detalhes.page').then(m => m.DetalhesPage)
 },
+{
+    path: 'cadastro',
+    loadComponent: () => 
+      import('./cadastro/cadastro.page').then(m => m.CadastroPage)
+  },
   {
     path: '',
     redirectTo: 'login', // O app começa no login

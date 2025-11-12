@@ -10,6 +10,7 @@ export const environment = {
     storageBucket: "clap-c767f.firebasestorage.app",
     messagingSenderId: "836484119429",
     appId: "1:836484119429:web:58da07d914be3ecfe8e2ec"
-  }
+  },
+  tmdbApiKey: '77c38bc86cd424db480ddbe638e4b466'
 };
 

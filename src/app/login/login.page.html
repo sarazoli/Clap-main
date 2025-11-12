@@ -12,7 +12,10 @@
 
         <h1 class="title">Login</h1> <!-- Título dentro do card -->
 
-        <form [formGroup]="loginForm" (ngSubmit)="onLogin()"> <!-- Formulário reativo -->
+        <!-- 
+          [ALTERAÇÃO 1]: Removido (ngSubmit)="onLogin()" daqui
+        -->
+        <form [formGroup]="loginForm">
 
           <ion-item class="input-item"> <!-- Input de email -->
             <ion-label position="stacked">Email</ion-label>
@@ -47,7 +50,16 @@
           </ion-text>
 
           <div class="btn-row"> <!-- Botão centralizado -->
-            <ion-button type="submit" class="login-button" shape="round">
+            <!-- 
+              [ALTERAÇÃO 2]: Removido type="submit"
+              [ALTERAÇÃO 3]: Adicionado (click)="onLogin()"
+              [ALTERAÇÃO 4]: Adicionado [disabled]="!loginForm.valid"
+            -->
+            <ion-button 
+                class="login-button" 
+                shape="round"
+                (click)="onLogin()"
+                [disabled]="!loginForm.valid">
               <!-- Ícone dentro do botão -->
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
@@ -61,7 +73,12 @@
     </ion-card>
 
     <div class="footer-links"> <!-- Link para a página de cadastro -->
-      <a routerLink="/cadastro">Ainda não tem conta? Cadastre-se!</a>
+      <!-- 
+        [RECOMENDAÇÃO]: Use o (click) aqui também, como sugerido antes.
+        Se o routerLink estiver funcionando, pode deixar, mas
+        o (click) é mais garantido no APK.
+      -->
+      <a (click)="goToCadastro()">Ainda não tem conta? Cadastre-se!</a>
     </div>
 
   </div>

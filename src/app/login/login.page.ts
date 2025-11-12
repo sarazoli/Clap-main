@@ -1,14 +1,23 @@
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink} from '@angular/router';
-import { 
-  IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, 
-  IonCardSubtitle, IonCardTitle, IonButton, IonInput, IonIcon, IonInputPasswordToggle 
-} from '@ionic/angular/standalone';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+// Importe os SERVIÇOS
 import { LoadingController, ToastController } from '@ionic/angular';
 
-import { AuthService } from '../services/authservice'; // 👈 Importa aqui também!
+// Importe os COMPONENTES
+import { 
+  IonContent, 
+  IonCard, 
+  IonCardContent, 
+  IonItem, 
+  IonLabel, 
+  IonInput, 
+  IonButton, 
+  IonText, 
+  IonInputPasswordToggle
+} from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -17,79 +26,92 @@ import { AuthService } from '../services/authservice'; // 👈 Importa aqui tamb
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
-    FormsModule,
     ReactiveFormsModule,
     IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     IonCard,
     IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonButton,
+    IonItem,
+    IonLabel,
     IonInput,
-    IonIcon,
-    IonInputPasswordToggle,
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    IonButton,
+    IonText,
+    IonInputPasswordToggle
+  ]
 })
 export class LoginPage implements OnInit {
-  loginForm!: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private router: Router,
-    private loadingController: LoadingController,
-    private toastController: ToastController,
-    private authService: AuthService // 👈 Injetado aqui
-  ) {}
-
-  ngOnInit() {
-    // Inicializa o formulário de login
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]], // Email obrigatório e válido
-      password: ['', [Validators.required, Validators.minLength(8)]] // Senha obrigatória com mínimo 8
+    private loadingCtrl: LoadingController, // Injete
+    private toastCtrl: ToastController      // Injete
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
+  ngOnInit() { }
+
   async onLogin() {
+    // Verificação de validade (segurança extra)
     if (this.loginForm.invalid) {
-      // Mostra toast se formulário inválido
-      this.showToast('Por favor, preencha todos os campos corretamente.');
+      console.log('Formulário de login inválido');
       return;
     }
 
-    const { email, password } = this.loginForm.value; // Pega valores do formulário
-
-    // Cria loading enquanto processa login
-    const loading = await this.loadingController.create({ 
+    // Crie e mostre o loading
+    const loading = await this.loadingCtrl.create({
       message: 'Entrando...',
-      spinner: 'bubbles', // Tipo de spinner
-      cssClass: 'custom-loading', // Classe customizada do CSS
+      cssClass: 'custom-loading', // Usando sua classe CSS!
+      spinner: 'crescent',
     });
-    await loading.present(); // Mostra o loading
+    await loading.present();
 
     try {
-      await this.authService.login(email, password); // Chama serviço de login
-      await loading.dismiss(); // Fecha loading
-   
-      this.router.navigateByUrl('/home', { replaceUrl: true }); // Navega para home
-    } catch (error: any) {
-      await loading.dismiss(); // Fecha loading em caso de erro
-      this.showToast('Erro no login: ' + error.message); // Mostra erro
+      const { email, password } = this.loginForm.value;
+
+      console.log('Tentando login com:', email);
+      
+      // AQUI é onde você colocaria sua lógica de Firebase
+      // ou API para autenticar o usuário.
+      // Ex: await this.authService.login(email, password);
+      
+      // Vamos simular uma espera de 2 segundos:
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      console.log('Login bem-sucedido, navegando para /home');
+
+      // Se tudo der certo, navegue para a home
+      // (Não precisa de toast de sucesso se você vai mudar de tela)
+      this.router.navigateByUrl('/home');
+
+    } catch (error) {
+      console.error('Erro no login:', error);
+      // Se der erro, mostre um toast de erro
+      await this.showToast('Email ou senha inválidos.', 'danger');
+      
+    } finally {
+      // Feche o loading
+      await loading.dismiss();
     }
   }
 
-  // Função para mostrar toast
-  private async showToast(message: string) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 2000,
-      color: 'medium' // Cor do toast
+  // Função auxiliar para o link de cadastro
+  goToCadastro() {
+    this.router.navigateByUrl('/cadastro');
+  }
+
+  // Função auxiliar para mostrar Toasts
+  async showToast(message: string, color: 'success' | 'danger' = 'success') {
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 2500, // Um pouco mais de tempo
+      color: color,
+      position: 'top'
     });
-    await toast.present(); // Exibe o toast
+    await toast.present();
   }
 }
